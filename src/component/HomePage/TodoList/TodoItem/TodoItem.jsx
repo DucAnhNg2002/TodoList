@@ -55,10 +55,10 @@ function TodoItem({id,time,name,isDone,updateItem,deleteItem}) {
                 }
             </div>
             <div className="todo-item-update">
-                <button onClick={handleUpdateItem}> Update </button>
+                <button className="todo-item-update-button" onClick={handleUpdateItem}> Update </button>
             </div>
             <div className="todo-item-delete" >
-                <button onClick={handleDeleteItem} > Delete </button>
+                <button className="todo-item-delete-button" onClick={handleDeleteItem} > Delete </button>
             </div>
         </React.Fragment>
     )

@@ -26,6 +26,7 @@ function TodoList({todoList,createTodo}) {
     useEffect(() => {
         instanceAxios.get(URL)
         .then((response) => {
+            console.log("Xin chào: " + response.data.name + " !");
             createTodo(response.data.data);
         })
         .catch((error) => {

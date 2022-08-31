@@ -3,6 +3,8 @@
     justify-content: center;
     align-items: center;
     line-height: 2rem;
+    margin: 0.3rem 0;
+    /* border: 1px solid black; */
 }
 
 .todo-item-id,
@@ -20,5 +22,18 @@
     justify-content: center;
 }
 .todo-item-isDone:hover {
+    cursor: pointer;
+}
+
+.todo-item-update-button,
+.todo-item-delete-button {
+    padding: 0.2rem 0.75rem;
+    margin-right: 0.25rem;
+    border-radius: 0.5rem;
+    border: 0.5px solid black;
+}
+
+.todo-item-update-button:hover,
+.todo-item-delete-button:hover {
     cursor: pointer;
 }
