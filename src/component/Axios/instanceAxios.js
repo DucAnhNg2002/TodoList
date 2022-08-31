@@ -4,19 +4,21 @@ const instanceAxios = axios.create({
     headers: {'X-Custom-Header': 'foobar'}
 });
 
-export const getData = () => {
+export const AxiosGetData = () => {
     return instanceAxios.get("TodoApp")
             .then((response) => response.data)
 }
 
-export const getDataByID = (id) => {
+export const AxiosGetDataByID = (id) => {
     return instanceAxios.get(`TodoApp/${id}`)
             .then((respose) => respose.data)
             .catch((error) => {console.log(error)})
 }
 
-export const putData = (id,data) => {
-    instanceAxios.put(`TodoApp/${id}`,data)
+export const AxiosPutData = (id,data) => {
+    instanceAxios.put(`TodoApp/${id}`,{
+        data: data,
+    })
 }
 
 export default instanceAxios;

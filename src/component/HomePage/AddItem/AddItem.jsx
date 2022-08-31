@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./AddItem.css";
 
 import { connect } from "react-redux";
-import { addNewItem } from "../Action/index.js";
+import { addNewItem } from "../../Action/index.js"
 
 function newItem(name) {
     const date = new Date();
@@ -12,14 +12,12 @@ function newItem(name) {
     this.isDone = false;
 }
 
-function AddItem({todoList,addNewItem}) {
+function AddItem({addNewItem}) {
     const [nameTodoAdd,setNameTodoAdd] = useState('');
     const handleAddItem = () => {
-        addNewItem(new newItem(nameTodoAdd));
+        const Item = new newItem(nameTodoAdd);
+        addNewItem(Item);
         setNameTodoAdd('');
-        /* update to API after add item to todolist */ 
-
-        /* update to API after add item to todolist */ 
     }
     return (
         <div className="add-item">
@@ -36,9 +34,4 @@ const mapDispatchToProps = (dispatch) => {
         },
     }
 }
-const mapStateToProps = (state,ownProps) => {
-    return {
-        todoList: state.item,
-    }
-}
-export default connect(mapStateToProps,mapDispatchToProps)(AddItem);
+export default connect(null,mapDispatchToProps)(AddItem);

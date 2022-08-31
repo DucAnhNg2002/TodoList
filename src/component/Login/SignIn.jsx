@@ -1,10 +1,9 @@
-import instanceAxios, { getData } from "../Axios/instanceAxios";
+import instanceAxios from "../Axios/instanceAxios";
 import "./Login.css"
 import $ from "jquery"
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { BrowserRouter, Router, Route, Routes } from 'react-router-dom';
-import TodoList from "../TodoList/TodoList";
+
 
 /* Auto Login */
 const keyLocalStore = "AccountTodoApp"
@@ -50,10 +49,6 @@ export default function SignIn() {
             alert("Sai thông tin !!!");
         }
     }
-
-    useEffect(() => {
-        idUser = null;
-    }, []);
     return (
         <div className="sign-in">
             <div className="sign-in-title">
@@ -73,5 +68,4 @@ export default function SignIn() {
         </div>
     )
 }
-
 export {idUser};

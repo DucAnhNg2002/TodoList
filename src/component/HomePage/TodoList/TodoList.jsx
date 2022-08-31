@@ -1,11 +1,10 @@
 import React, { useEffect } from "react";
-import instanceAxios from "../Axios/instanceAxios";
-import TodoItem from "../TodoItem/TodoItem";
+import instanceAxios from "../../Axios/instanceAxios";
+import TodoItem from "./TodoItem/TodoItem";
 import "./TodoList.css";
-import { idUser } from "../Login/SignIn";
-import { useNavigate } from "react-router-dom";
+import { idUser } from "../../Login/SignIn";
 import { connect } from "react-redux";
-import { createNewTodo } from "../Action/index.js";
+import { createNewTodo } from "../../Action/index.js";
 
 // let todo = [
 //     {
@@ -35,36 +34,17 @@ import { createNewTodo } from "../Action/index.js";
 //     }
 // ]
 
-let todo = []
-let loadedData = false
-
 function TodoList({todoList,createTodo}) {
-    
-    const navigative = useNavigate();
-    useEffect(() => {
-        if(idUser == null) {
-            navigative("/");
-        }
-    }, []); 
     const URL = `TodoApp/${idUser}`;
     useEffect(() => {
         instanceAxios.get(URL)
         .then((response) => {
-            loadedData = true
             createTodo(response.data.data);
         })
         .catch((error) => {
             console.log(error);
         })
     },[])
-
-    // useEffect(() => {
-    //     if(loadedData) {
-    //         instanceAxios.put(URL, {
-
-    //         })
-    //     }
-    // },[todoList])
 
     return (
     <React.Fragment>
@@ -82,11 +62,9 @@ function TodoList({todoList,createTodo}) {
                     <tbody>
                     {
                         todoList.map((val) => {
-                            return (
+                            return ( 
                                 <tr key = {val.id} className = "todo-item">
-                                    <TodoItem id = {val.id} name = {val.name} isDone = {val.isDone} 
-                                //    historyTodoList = {historyTodoList} setHistoryTodoList = {setHistoryTodoList}
-                                    />
+                                    <TodoItem id = {val.id} name = {val.name} isDone = {val.isDone} />
                                 </tr>
                             )
                         })

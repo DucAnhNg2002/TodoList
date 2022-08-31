@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import getTime from "../getTime.Current";
 import "./TodoItem.css";
 
 
@@ -40,19 +39,6 @@ export default function TodoItem({id,name,isDone,todoList,setTodoList,historyTod
             const todoList = [...preTodoList];
             todoList.splice(findIdx,1);
             return todoList;
-        })
-        setHistoryTodoList((preHistoryTodoList) => {
-            const historyTodoList = [...preHistoryTodoList]
-            historyTodoList.push({
-                time : getTime(),
-                type: "Delete",
-                value: {
-                    id: todoList[findIdx].id,
-                    name: todoList[findIdx].name,
-                    created: todoList[findIdx].time 
-                }
-            })
-            return historyTodoList
         })
     }
     return (
