@@ -1,33 +1,17 @@
-.td-done {
-    display: inline-flex;
+.todo-item {
+    display: flex;
     justify-content: center;
+    align-items: center;
+    line-height: 2rem;
 }
 
-.toto-item--border {
-
+.todo-item-id,
+.todo-item-name,
+.todo-item-isDone {
+    margin: 0 8rem;
 }
 
-.input-todo-item__Name {
-    border-radius: 0.5rem;
-    padding: 0.2rem 0.75rem;
-}
-.todo-item__Name {
-    text-align: start;
-    padding-left: 2rem;
-
-}
-
-.todo-item__Delete, .todo-item__Update {
-    border-radius: .2rem;
-    border: 0.5px solid black;
-    margin: 0 5px;
-    padding: 0.05rem 0.25rem;
-}
-.todo-item__Delete:hover, .todo-item__Update:hover {
-    cursor: pointer;
-}
-
-.todo-item__isDone {
+.todo-item-isDone {
     border: 1px solid black;
     height: 1rem;
     width: 1rem;
@@ -35,6 +19,6 @@
     align-items: center;
     justify-content: center;
 }
-.todo-item__isDone:hover {
+.todo-item-isDone:hover {
     cursor: pointer;
 }

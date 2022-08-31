@@ -16,19 +16,10 @@ export default function HomePage() {
     },[]);
     return (
         <div className="home-page">
-            {
-                (
-                    idUser == null &&
-                    <div> Chưa Đăng Nhập </div>
-                )
-                ||
-                (
-                    <React.Fragment>
-                        <AddItem/>
-                        <TodoList/>
-                    </React.Fragment>
-                )
-            }
+            <React.Fragment>
+                <AddItem/>
+                <TodoList/>
+            </React.Fragment>
         </div>
     )
 }

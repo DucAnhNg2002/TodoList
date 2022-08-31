@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import { addNewItem } from "../../Action/index.js"
 
 function newItem(name) {
+    /* Item is object contain {id, time, name, isDone} */
     const date = new Date();
     this.id = date.getTime();
     this.time = date.getUTCDate() + "/" + (date.getUTCMonth()+1) + "/" + date.getUTCFullYear() + " " + date.getHours() + ":" + date.getMinutes();

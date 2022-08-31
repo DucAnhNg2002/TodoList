@@ -1,76 +1,77 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./TodoItem.css";
 
+import { connect } from "react-redux";
+import { updateItem,deleteItem } from "../../../Action/index.js";
 
-export default function TodoItem({id,name,isDone,todoList,setTodoList,historyTodoList,setHistoryTodoList}) {
+function TodoItem({id,time,name,isDone,updateItem,deleteItem}) {
+    const [IsDone,setIsDone] = useState(isDone);
+
     const [clickUpdate,setClickUpdate] = useState(false);
-    const [stateName,setStateName] = useState(name);
+    const [nameState,setNameState] = useState(name);
 
     const handleChangeDone = (e) => {
-        const findIdx = todoList.findIndex((value) => value.id == id);
-        setTodoList((preTodoList) => {
-            const todoList = [...preTodoList];
-            todoList[findIdx].isDone = !todoList[findIdx].isDone;
-            return todoList;
-        })
+        updateItem(id,{id: id, time: time, name: name,isDone: !IsDone});
+        setIsDone(!IsDone);
     }
 
     const handleChangeName = (e) => {
-        setStateName(e.target.value);
+        setNameState(e.target.value);
     }
 
     const handleUpdateItem = (e) => {
-        const preClick = clickUpdate;
-        if(preClick && stateName == '') return;
-        if(preClick) {
-            const findIdx = todoList.findIndex((value) => value.id == id);
-            setTodoList((preTodoList) => {
-                const todoList = [...preTodoList];
-                todoList[findIdx].name = stateName;
-                return todoList;
-            })
+        if(nameState && clickUpdate) {
+            updateItem(id,{id: id, time: time, name: nameState,isDone: isDone});
+            setNameState('');
         }
-        setClickUpdate(!preClick);
+        setClickUpdate(!clickUpdate);
     }
     
     const handleDeleteItem = (e) => {
-        const findIdx = todoList.findIndex((value) => value.id == id)
-        setTodoList((preTodoList) => {
-            const todoList = [...preTodoList];
-            todoList.splice(findIdx,1);
-            return todoList;
-        })
+        deleteItem(id);
     }
+
     return (
         <React.Fragment>
-            <td> <div className="toto-item--border todo-item__Id">{id}</div> </td>
-            <td> 
+            <div className="todo-item-id">
+                {id}
+            </div>
+            <div className="todo-item-name">
                 {
-                    (
-                        clickUpdate && 
-                        <input className="toto-item--border input-todo-item__Name" value = {stateName} onChange = {handleChangeName}/>
-                    )
-                    ||
-                    <div className="toto-item--border todo-item__Name">{name}</div> 
+                ( 
+                clickUpdate &&
+                <input className="" value = {nameState} onChange = {handleChangeName} />
+                )
+                ||
+                ( 
+                <div> {name} </div>
+                )
                 }
-              
-            </td>
-            <td className="td-done"> 
-                <div className="toto-item--border todo-item__isDone" onClick={handleChangeDone}> 
-                    {
-                        (
-                            isDone && 
-                            <i className ="fa-solid fa-check"></i>
-                        )
-                    }
-                </div> 
-            </td>
-            <td> 
-                <div className="todo-item__Actions">
-                    <button className="todo-item__Update" onClick={handleUpdateItem}> Update </button>
-                    <button className="todo-item__Delete" onClick={handleDeleteItem}> Delete </button>   
-                </div>
-            </td>
+            </div>
+            <div className="todo-item-isDone" onClick={handleChangeDone} >
+                {
+                    IsDone && 
+                    <i className ="fa-solid fa-check"></i>
+                }
+            </div>
+            <div className="todo-item-update">
+                <button onClick={handleUpdateItem}> Update </button>
+            </div>
+            <div className="todo-item-delete" >
+                <button onClick={handleDeleteItem} > Delete </button>
+            </div>
         </React.Fragment>
     )
 }
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        updateItem: (id,item) => {
+            dispatch(updateItem(id,item));
+        },
+        deleteItem: (id,item) => {
+            dispatch(deleteItem(id));
+        },
+    }
+}
+export default connect(null,mapDispatchToProps)(TodoItem);

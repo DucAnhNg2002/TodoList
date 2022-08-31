@@ -50,22 +50,26 @@ export default function SignIn() {
         }
     }
     return (
+    <div className="sign-in-wrap">
         <div className="sign-in">
             <div className="sign-in-title">
                 <h2>TodoApp By DucAnh</h2>
             </div> 
-            <div>
-             <input type = "text" className="input-account" value = {account} placeholder = "Account" 
-                onChange={(e) => {setAccount(e.target.value)}}
+            <div className="sign-in-account">
+                <input type = "text" className="input-account" value = {account} placeholder = "Account" 
+                    onChange={(e) => {setAccount(e.target.value)}}
                 />
             </div>
-            <div>
+            <div className="sign-in-password">
                 <input type = "password" className="input-password" value = {password} placeholder = "Password"
-                onChange={(e) => {setPassword(e.target.value)}}
+                    onChange={(e) => {setPassword(e.target.value)}}
                 />
             </div>
-            <button onClick={handleLogin}> Login </button>
+            <div className="sign-in-button">
+                <button onClick={handleLogin}> Login </button>
+            </div>
         </div>
+    </div>  
     )
 }
 export {idUser};

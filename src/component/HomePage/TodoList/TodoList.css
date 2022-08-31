@@ -1,16 +1,19 @@
-.todo-list {
+/* Header */
+.todo-list-header {
     display: flex;
+    justify-content: center;
+}
+.todo-list-header-id, 
+.todo-list-header-name,
+.todo-list-header-isDone {
+    margin: 0 8rem;
+}
+/* Header */
+
+/* Body */
+.todo-list {
     margin-top: 2rem;
 }
-
-.todo-list__add {
-    margin: 10rem 4rem 0 4rem;
-}
-
-.button-add-item:hover {
-    cursor: pointer;
-}
-
 .thead-id {
     width: 10rem;
 }
@@ -23,18 +26,4 @@
 .thead-actions {
     width: 10rem;
 }
-
-.todo-item {
-    line-height: 2rem;
-}
-
-.todo-list__select {
-    display: flex;
-    justify-content: center;
-}
-.button-select {
-    padding: 0.25rem 0.5rem;
-}
-.button-select:hover {
-    cursor: pointer;
-}
+/* Body */

@@ -6,34 +6,21 @@ import { idUser } from "../../Login/SignIn";
 import { connect } from "react-redux";
 import { createNewTodo } from "../../Action/index.js";
 
-// let todo = [
-//     {
-//         id:1,
-//         name: "Đi ngủ",
-//         isDone: false,
-//     },
-//     {
-//         id:2,
-//         name: "Nấu cơm",
-//         isDone: false,
-//     },
-//     {
-//         id:3,
-//         name: "Rửa bát",
-//         isDone: false,
-//     },
-//     {
-//         id:4,
-//         name: "Chơi game",
-//         isDone: false,
-//     },
-//     {
-//         id:5,
-//         name: "Học bài",
-//         isDone: true,
-//     }
-// ]
-
+function Header() {
+    return (
+        <header className="todo-list-header">
+            <h3 className="todo-list-header-id">
+                ID
+            </h3>
+            <h3 className="todo-list-header-name">
+                Name
+            </h3>
+            <h3 className="todo-list-header-isDone">
+                IsDone
+            </h3>
+        </header>
+    )
+}
 function TodoList({todoList,createTodo}) {
     const URL = `TodoApp/${idUser}`;
     useEffect(() => {
@@ -47,33 +34,19 @@ function TodoList({todoList,createTodo}) {
     },[])
 
     return (
-    <React.Fragment>
-        <div className="todo-list">
-            <div className="todo-list__item">
-                <table>
-                    <thead>
-                        <tr>
-                            <th className="thead thead-id"> ID </th>
-                            <th className="thead thead-name"> Name </th>
-                            <th className="thead thead-done"> Done </th>
-                            <th className="thead thead-actions"> Actions </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    {
-                        todoList.map((val) => {
-                            return ( 
-                                <tr key = {val.id} className = "todo-item">
-                                    <TodoItem id = {val.id} name = {val.name} isDone = {val.isDone} />
-                                </tr>
-                            )
-                        })
-                    }
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </React.Fragment>
+    <div className="todo-list">
+        <Header />
+        {
+        todoList.map((val) => {
+            return ( 
+                /* key is time random */
+                <div key = {val.id} className = "todo-item"> 
+                    <TodoItem id = {val.id} time = {val.time} name = {val.name} isDone = {val.isDone} />
+                </div>
+                )
+            })
+        }
+    </div>
     )
 }
 const mapStateToProps = (state,ownProps) => {
