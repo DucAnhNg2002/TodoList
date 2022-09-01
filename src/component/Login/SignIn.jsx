@@ -1,5 +1,5 @@
 import instanceAxios from "../Axios/instanceAxios";
-import "./Login.css"
+import signin from "./Login.module.css"
 import $ from "jquery"
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -50,23 +50,23 @@ export default function SignIn() {
         }
     }
     return (
-    <div className="sign-in-wrap">
-        <div className="sign-in">
-            <div className="sign-in-title">
+    <div className= {signin.sign_in_wrap}>
+        <div className={signin.sign_in}>
+            <div className={signin.sign_in_title}>
                 <h2>TodoApp By DucAnh</h2>
             </div> 
-            <div className="sign-in-account">
-                <input type = "text" className="input-account" value = {account} placeholder = "Account" 
+            <div className={signin.sign_in_account}>
+                <input type = "text" className={signin.input_account} value = {account} placeholder = "Account" 
                     onChange={(e) => {setAccount(e.target.value)}}
                 />
             </div>
-            <div className="sign-in-password">
-                <input type = "password" className="input-password" value = {password} placeholder = "Password"
+            <div className={signin.sign_in_password}>
+                <input type = "password" className={signin.input_password} value = {password} placeholder = "Password"
                     onChange={(e) => {setPassword(e.target.value)}}
                 />
             </div>
-            <div className="sign-in-button">
-                <button onClick={handleLogin}> Login </button>
+            <div className={signin.sign_in_button}>
+                <button style = {{cursor: "pointer",}}onClick={handleLogin}> Login </button>
             </div>
         </div>
     </div>  

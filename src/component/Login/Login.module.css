@@ -1,25 +1,25 @@
-.sign-in-wrap {
+.sign_in_wrap {
     display: flex;
 }
-.sign-in {
+.sign_in {
     display: block;
     margin-top: 5rem;
     margin-left: auto;
     margin-right: auto;
 }
-.sign-in-title,
-.sign-in-account,
-.sign-in-password,
-.sign-in-button {
+.sign_in_title,
+.sign_in_account,
+.sign_in_password,
+.sign_in_button {
     display: flex;
     justify-content: center;
 }
-.input-account, .input-password {
+.input_account, .input_password {
     border-radius: 0.3rem;
     line-height: 1.2rem;
     margin: 0.2rem 0;
     padding: 0 0.5rem;
 }
-.sign-in-button {
+.sign_in_button {
     margin-top: 0.5rem;
 }
