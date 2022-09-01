@@ -33,8 +33,11 @@ function TodoItem({id,time,name,isDone,updateItem,deleteItem}) {
 
     return (
         <React.Fragment>
-            <div className="todo-item-id">
-                {id}
+            <div className="todo-item-isDone" onClick={handleChangeDone} >
+                {
+                    IsDone && 
+                    <i className ="fa-solid fa-check"></i>
+                }
             </div>
             <div className="todo-item-name-wrap">
                 {
@@ -48,18 +51,16 @@ function TodoItem({id,time,name,isDone,updateItem,deleteItem}) {
                 )
                 }
             </div>
-            <div className="todo-item-isDone" onClick={handleChangeDone} >
-                {
-                    IsDone && 
-                    <i className ="fa-solid fa-check"></i>
-                }
-            </div>
             <div className="todo-item-select">
                 <div className="todo-item-update">
-                    <button className="todo-item-update-button" onClick={handleUpdateItem}> Update </button>
+                    <button className="todo-item-update-button" onClick={handleUpdateItem}> 
+                        <i className="fa-solid fa-pen-to-square"></i> 
+                    </button>
                 </div>
                 <div className="todo-item-delete" >
-                    <button className="todo-item-delete-button" onClick={handleDeleteItem} > Delete </button>
+                    <button className="todo-item-delete-button" onClick={handleDeleteItem} > 
+                        <i className="fa-sharp fa-solid fa-trash"></i>
+                    </button>
                 </div>
             </div>
         </React.Fragment>

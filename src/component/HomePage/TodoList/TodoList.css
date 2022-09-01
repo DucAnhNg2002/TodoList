@@ -13,7 +13,9 @@
 
 /* Body */
 .todo-list {
-    margin-top: 2rem;
+    margin: 2rem 25rem 0;
+    border: 1px solid black;
+    border-radius: .5rem;
 }
 .thead-id {
     width: 10rem;

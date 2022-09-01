@@ -36,7 +36,7 @@ function TodoList({todoList,createTodo}) {
 
     return (
     <div className="todo-list">
-        <Header />
+        {/* <Header /> */}
         {
         todoList.map((val) => {
             return ( 

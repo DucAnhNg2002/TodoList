@@ -1,26 +1,18 @@
 .todo-item {
     display: flex;
-    justify-content: space-between;
+    justify-content: start;
     align-items: center;
-    line-height: 2rem;
-    margin: 0.3rem 14rem 0 22rem;
     position: relative;
-    padding: 0.1rem;
+    margin: .75rem .5rem;
+    padding: .75rem;
+    border: 1px solid rgb(150, 150, 147);
+    border-radius: .5rem;
 }
 
-.todo-item-id {
-    flex-grow: 10;
-}
-.todo-item-name-wrap {
-    flex-grow: 30;
-}
-
-.todo-item-name {
-  
-}
 .todo-item-name-input {
     border-radius: 0.3rem;
-    width: 10rem;
+    padding: .2rem .5rem;
+    width: 15rem;
 }
 .todo-item-isDone {
     border: 1px solid black;
@@ -29,7 +21,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 3rem;
+    margin: 0 2rem 0 .75rem;
 }
 .todo-item-isDone:hover {
     cursor: pointer;
@@ -50,4 +42,7 @@
 
 .todo-item-select {
     display: flex;
+    position: absolute;
+    right: 0;
+    margin-right: .5rem;
 }
