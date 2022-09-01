@@ -1,5 +1,5 @@
 import instanceAxios, { AxiosPutData } from "../Axios/instanceAxios.js";
-import { ADD_NEW_ITEM,CREATE_NEW_TODO,DELETE_ITEM,UPDATE_ITEM } from "../Const/index.js";
+import { ADD_NEW_ITEM,CLEAR_TODO,CREATE_NEW_TODO,DELETE_ITEM,UPDATE_ITEM } from "../Const/index.js";
 import { idUser } from "../Login/SignIn.jsx";
 
 const findIdxById = (todoList,id) => {
@@ -28,6 +28,10 @@ const ItemReducers = (todoList = [], action) => {
         case DELETE_ITEM:     /* Component TodoItem */ 
             todo = [...todoList];
             todo.splice(findIdxById(todoList,action.id),1);
+            AxiosPutData(idUser,todo);
+            return todo;
+        case CLEAR_TODO:
+            todo = [];
             AxiosPutData(idUser,todo);
             return todo;
         default:

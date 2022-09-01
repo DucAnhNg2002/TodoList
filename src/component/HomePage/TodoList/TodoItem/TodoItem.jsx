@@ -20,9 +20,9 @@ function TodoItem({id,time,name,isDone,updateItem,deleteItem}) {
     }
 
     const handleUpdateItem = (e) => {
+        if(clickUpdate && setNameState == '') return;
         if(nameState && clickUpdate) {
             updateItem(id,{id: id, time: time, name: nameState,isDone: isDone});
-            setNameState('');
         }
         setClickUpdate(!clickUpdate);
     }
@@ -36,15 +36,15 @@ function TodoItem({id,time,name,isDone,updateItem,deleteItem}) {
             <div className="todo-item-id">
                 {id}
             </div>
-            <div className="todo-item-name">
+            <div className="todo-item-name-wrap">
                 {
                 ( 
                 clickUpdate &&
-                <input className="" value = {nameState} onChange = {handleChangeName} />
+                <input className="todo-item-name-input" value = {nameState} onChange = {handleChangeName} />
                 )
                 ||
                 ( 
-                <div> {name} </div>
+                <div className="todo-item-name"> {name} </div>
                 )
                 }
             </div>
@@ -54,11 +54,13 @@ function TodoItem({id,time,name,isDone,updateItem,deleteItem}) {
                     <i className ="fa-solid fa-check"></i>
                 }
             </div>
-            <div className="todo-item-update">
-                <button className="todo-item-update-button" onClick={handleUpdateItem}> Update </button>
-            </div>
-            <div className="todo-item-delete" >
-                <button className="todo-item-delete-button" onClick={handleDeleteItem} > Delete </button>
+            <div className="todo-item-select">
+                <div className="todo-item-update">
+                    <button className="todo-item-update-button" onClick={handleUpdateItem}> Update </button>
+                </div>
+                <div className="todo-item-delete" >
+                    <button className="todo-item-delete-button" onClick={handleDeleteItem} > Delete </button>
+                </div>
             </div>
         </React.Fragment>
     )

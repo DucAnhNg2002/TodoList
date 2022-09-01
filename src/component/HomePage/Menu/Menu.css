@@ -1,0 +1,12 @@
+.menu {
+    margin: 1rem 0;
+    display: flex;
+    justify-content: center;
+}
+.button-clear-todo {
+    border-radius: .25rem;
+    padding: 0.3rem 1rem;
+}
+.button-clear-todo:hover {
+    cursor: pointer;
+}

@@ -6,6 +6,7 @@ import { idUser } from "../Login/SignIn";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import React from "react";
+import Menu from "./Menu/Menu.jsx";
 
 export default function HomePage() {
     const navigative = useNavigate();
@@ -18,6 +19,7 @@ export default function HomePage() {
         <div className="home-page">
             <React.Fragment>
                 <AddItem/>
+                <Menu/>
                 <TodoList/>
             </React.Fragment>
         </div>

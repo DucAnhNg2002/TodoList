@@ -1,7 +1,8 @@
 /* Header */
 .todo-list-header {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    margin: 0rem 17rem;
 }
 .todo-list-header-id, 
 .todo-list-header-name,
