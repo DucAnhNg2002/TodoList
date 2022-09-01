@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./AddItem.css";
+import "./AddItem.scss";
 
 import { connect } from "react-redux";
 import { addNewItem } from "../../Action/index.js"

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./TodoItem.css";
+import "./TodoItem.scss";
 
 import { connect } from "react-redux";
 import { updateItem,deleteItem } from "../../../Action/index.js";

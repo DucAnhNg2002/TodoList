@@ -1,7 +1,7 @@
 import AddItem from "./AddItem/AddItem.jsx"
 import TodoList from "./TodoList/TodoList"
 
-import "./HomePage.css";
+import "./HomePage.scss";
 import { idUser } from "../Login/SignIn";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";

@@ -1,5 +1,5 @@
 import ClearTodo from "./ClearTodo";
-import "./Menu.css";
+import "./Menu.scss";
 
 const Menu = () => {
     return (

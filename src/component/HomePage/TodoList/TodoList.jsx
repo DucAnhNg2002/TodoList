@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import instanceAxios from "../../Axios/instanceAxios";
 import TodoItem from "./TodoItem/TodoItem";
-import "./TodoList.css";
+import "./TodoList.scss";
 import { idUser } from "../../Login/SignIn";
 import { connect } from "react-redux";
 import { createNewTodo } from "../../Action/index.js";
