@@ -3,8 +3,8 @@ import signin from "./Login.module.css"
 import $ from "jquery"
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-
-
+import { connect } from "react-redux";
+import { clearTodoLocal } from "../Action";
 /* Auto Login */
 const keyLocalStore = "AccountTodoApp"
 let Account = { accountCurrent: '', passwordCurrent: ''}
@@ -29,7 +29,11 @@ instanceAxios.get("TodoApp")
     })
 /* Load users */
 
-export default function SignIn() {
+const SignIn = ({clearTodo}) => {
+    useEffect(() => {
+        clearTodo(); // clear Local
+    },[]);
+
     const [account,setAccount] = useState('');
     const [password,setPassword] = useState('');
     const navigative = useNavigate();
@@ -41,7 +45,7 @@ export default function SignIn() {
             if(element.account == account && element.password == password) {
                 checkLogin = true;
                 idUser = element.id;
-                navigative("/HomePage"); // Navigative page 
+                navigative("/"); // Navigative page 
             }
             /* Login accepted */
         });
@@ -66,10 +70,18 @@ export default function SignIn() {
                 />
             </div>
             <div className={signin.sign_in_button}>
-                <button style = {{cursor: "pointer",}}onClick={handleLogin}> Login </button>
+                <button style = {{cursor: "pointer",}}onClick={handleLogin}> Đăng Nhập </button>
             </div>
         </div>
     </div>  
     )
 }
+const mapDispatchToProps = (dispatch) => {
+    return {
+        clearTodo: () => {
+            dispatch(clearTodoLocal());
+        }
+    }
+}
+export default connect(null,mapDispatchToProps)(SignIn);
 export {idUser};

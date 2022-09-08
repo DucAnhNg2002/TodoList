@@ -1,5 +1,5 @@
 import instanceAxios, { AxiosPutData } from "../Axios/instanceAxios.js";
-import { ADD_NEW_ITEM,CLEAR_TODO,CREATE_NEW_TODO,DELETE_ITEM,UPDATE_ITEM } from "../Const/index.js";
+import { ADD_NEW_ITEM,CLEAR_TODO,CREATE_NEW_TODO,DELETE_ITEM,UPDATE_ITEM,clea, CLEAR_TODO_LOCAL } from "../Const/index.js";
 import { idUser } from "../Login/SignIn.jsx";
 
 const findIdxById = (todoList,id) => {
@@ -33,6 +33,9 @@ const ItemReducers = (todoList = [], action) => {
         case CLEAR_TODO:
             todo = [];
             AxiosPutData(idUser,todo);
+            return todo;
+        case CLEAR_TODO_LOCAL:
+            todo = [];
             return todo;
         default:
             return [];

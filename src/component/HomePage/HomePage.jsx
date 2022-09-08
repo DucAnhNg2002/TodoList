@@ -12,16 +12,13 @@ export default function HomePage() {
     const navigative = useNavigate();
     useEffect(() => {
         if(idUser == null) {
-            navigative("/");
+            navigative("/Login");
         }
     },[]);
     return (
         <div className="home-page">
-            <React.Fragment>
-                <AddItem/>
-                <Menu/>
-                <TodoList/>
-            </React.Fragment>
+            <Menu/>
+            <TodoList/>
         </div>
     )
 }

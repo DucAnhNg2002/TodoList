@@ -1,10 +1,12 @@
-import ClearTodo from "./ClearTodo";
+import BtnAddTodo from "./BtnAddTodo";
+import BtnClearTodo from "./BtnClearTodo";
 import "./Menu.scss";
 
 const Menu = () => {
     return (
         <div className="menu">
-            <ClearTodo/>
+            <BtnAddTodo/>
+            <BtnClearTodo/>
         </div>
     )
 }

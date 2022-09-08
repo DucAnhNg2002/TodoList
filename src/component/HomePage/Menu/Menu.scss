@@ -2,11 +2,12 @@
     margin: 1rem 0;
     display: flex;
     justify-content: center;
-}
-.button-clear-todo {
-    border-radius: .25rem;
-    padding: 0.3rem 1rem;
-    &:hover {
-        cursor: pointer;
+    &-button {
+        border-radius: 0.25rem;
+        padding: 0.3rem 1rem;
+        margin: 0rem 0.5rem;
+        &:hover {
+            cursor: pointer;
+        }
     }
 }

@@ -1,9 +1,10 @@
 import { connect } from "react-redux/es/exports"
 import { clearTodo } from "../../Action/index"
-const ClearTodo = ({clearTodoList}) => {
+
+const BtnClearTodo = ({clearTodoList}) => {
     return (
         <div className="clear-todo">
-            <button className="button-clear-todo" onClick={() => {clearTodoList()}}> Clear </button>
+            <button className = "menu-button menu-clearTodo" onClick={() => {clearTodoList()}}> Clear </button>
         </div>
     )
 }
@@ -14,4 +15,4 @@ const mapDispatchToProps = (dispatch) => {
         },
     }
 }
-export default connect(null,mapDispatchToProps)(ClearTodo);
+export default connect(null,mapDispatchToProps)(BtnClearTodo);

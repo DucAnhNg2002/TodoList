@@ -1,4 +1,4 @@
-import { CREATE_NEW_TODO,ADD_NEW_ITEM,DELETE_ITEM,UPDATE_ITEM, CLEAR_TODO } from "../Const";
+import { CREATE_NEW_TODO,ADD_NEW_ITEM,DELETE_ITEM,UPDATE_ITEM, CLEAR_TODO,CLEAR_TODO_LOCAL } from "../Const";
 
 export const createNewTodo = (todo) => {
     return {
@@ -28,5 +28,10 @@ export const deleteItem = (id) => {
 export const clearTodo = () => {
     return {
         type: CLEAR_TODO,
+    }
+}
+export const clearTodoLocal = () => {
+    return {
+        type: CLEAR_TODO_LOCAL,
     }
 }
