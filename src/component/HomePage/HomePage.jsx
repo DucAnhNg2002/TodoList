@@ -17,6 +17,11 @@ export default function HomePage() {
     },[]);
     return (
         <div className="home-page">
+            <header style={{textAlign: "center"}}> 
+                <h1>
+                    TODO LIST
+                </h1>
+            </header>
             <Menu/>
             <TodoList/>
         </div>

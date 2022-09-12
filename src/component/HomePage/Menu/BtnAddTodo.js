@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import "../../../grid.css";
 
 const BtnAddTodo = () => {
     const naviagive = useNavigate();
@@ -7,7 +8,7 @@ const BtnAddTodo = () => {
     }
     return (
         <button className="menu-button menu-addTodo" onClick={handleClickBtnAddTodo}>
-            Thêm Công Việc
+           Thêm công việc
         </button>
     )
 }

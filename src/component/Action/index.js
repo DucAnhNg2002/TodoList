@@ -1,4 +1,5 @@
 import { CREATE_NEW_TODO,ADD_NEW_ITEM,DELETE_ITEM,UPDATE_ITEM, CLEAR_TODO,CLEAR_TODO_LOCAL } from "../Const";
+import { CLICK_ADD,CLICK_UPDATE } from "../Const";
 
 export const createNewTodo = (todo) => {
     return {
@@ -33,5 +34,17 @@ export const clearTodo = () => {
 export const clearTodoLocal = () => {
     return {
         type: CLEAR_TODO_LOCAL,
+    }
+}
+
+export const clickAdd = () => {
+    return {
+        type: CLICK_ADD,
+    }
+}
+
+export const clickUpdate = () => {
+    return {
+        type: CLICK_UPDATE,
     }
 }

@@ -12,16 +12,31 @@
     padding: 1em 3.5em;
     margin-top: 10em;
     &-name {
+        &-title {
+            margin: 0.3rem 0;
+        }
         &-wrap {
             margin-left: 1em;
+            position: relative;
         }
         &-input {
-            @include add-item;
+            @include add-item;     
+        }
+        &-warning {
+            position: absolute;
+            bottom: -20px;
+            left: 0;
+            font-size: 13px;
+            color: red;
         }
     }
     &-select {
+        &-title {
+            margin: 0.3rem 0;
+        }
         &-wrap {
             margin-left: 1em;
+            margin-top: 2.5em;
         }
         &-select {
             @include add-item;

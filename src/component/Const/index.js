@@ -4,3 +4,6 @@ export const DELETE_ITEM = "DELETE_ITEM";
 export const UPDATE_ITEM = "UPDATE_ITEM";
 export const CLEAR_TODO = "CLEAR_TODO";
 export const CLEAR_TODO_LOCAL = "CLEAR_TODO_LOCAL";
+
+export const CLICK_UPDATE = "CLICK_UPDATE";
+export const CLICK_ADD = "CLICK_ADD";

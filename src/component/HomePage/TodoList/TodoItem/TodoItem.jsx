@@ -2,12 +2,13 @@ import React, { useState } from "react";
 import "./TodoItem.scss";
 
 import { connect } from "react-redux";
-import { updateItem,deleteItem } from "../../../Action/index.js";
+import { updateItem,deleteItem,clickUpdate } from "../../../Action/index.js";
+import { isClickUpdate } from "../../../store.js";
+import { useNavigate } from "react-router-dom";
 
-function TodoItem({id,time,name,isDone,updateItem,deleteItem}) {
+function TodoItem({id,time,name,isDone,updateItem,deleteItem,clickUpdate}) {
+    const navigative = useNavigate();
     const [IsDone,setIsDone] = useState(isDone);
-
-    const [clickUpdate,setClickUpdate] = useState(false);
     const [nameState,setNameState] = useState(name);
 
     const handleChangeDone = (e) => {
@@ -20,11 +21,14 @@ function TodoItem({id,time,name,isDone,updateItem,deleteItem}) {
     }
 
     const handleUpdateItem = (e) => {
-        if(clickUpdate && setNameState == '') return;
-        if(nameState && clickUpdate) {
-            updateItem(id,{id: id, time: time, name: nameState,isDone: isDone});
-        }
-        setClickUpdate(!clickUpdate);
+        clickUpdate();
+        navigative("/AddItem");
+    //     isClickUpdate = true;
+    //     if(clickUpdate && setNameState == '') return;
+    //     if(nameState && clickUpdate) {
+    //         updateItem(id,{id: id, time: time, name: nameState,isDone: isDone});
+    //     }
+    //     setClickUpdate(!clickUpdate);   
     }
     
     const handleDeleteItem = (e) => {
@@ -39,18 +43,7 @@ function TodoItem({id,time,name,isDone,updateItem,deleteItem}) {
                     <i className ="fa-solid fa-check"></i>
                 }
             </div>
-            <div className="todo-item-name-wrap">
-                {
-                ( 
-                clickUpdate &&
-                <input className="todo-item-name-input" value = {nameState} onChange = {handleChangeName} />
-                )
-                ||
-                ( 
-                <div className="todo-item-name"> {name} </div>
-                )
-                }
-            </div>
+            <div className="todo-item-name"> { name } </div>
             <div className="todo-item-select">
                 <div className="todo-item-update">
                     <button className="todo-item-update-button" onClick={handleUpdateItem}> 
@@ -65,8 +58,7 @@ function TodoItem({id,time,name,isDone,updateItem,deleteItem}) {
             </div>
         </React.Fragment>
     )
-}
-
+}    
 const mapDispatchToProps = (dispatch) => {
     return {
         updateItem: (id,item) => {
@@ -75,6 +67,9 @@ const mapDispatchToProps = (dispatch) => {
         deleteItem: (id,item) => {
             dispatch(deleteItem(id));
         },
+        clickUpdate: () => {
+            dispatch(clickUpdate());
+        }
     }
 }
 export default connect(null,mapDispatchToProps)(TodoItem);

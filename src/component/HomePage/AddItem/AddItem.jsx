@@ -2,11 +2,13 @@ import React, { useEffect, useState } from "react";
 import "./AddItem.scss";
 
 import { connect } from "react-redux";
-import { addNewItem } from "../../Action/index.js"
+import { addNewItem, clickAdd } from "../../Action/index.js"
 import { useNavigate } from "react-router-dom";
 import { idUser } from "../../Login/SignIn.jsx";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { CLICK_UPDATE } from "../../Const";
+// import { clickAdd } from "../../Action/index.js";
 
 function newItem(name) {
     /* Item is object contain {id, time, name, isDone} */
@@ -17,7 +19,7 @@ function newItem(name) {
     this.isDone = false;
 }
 
-const AddItem = ({addNewItem}) => {
+const AddItem = ({click,clickAdd,addNewItem}) => {
     const navigative = useNavigate();
     const [nameTodoAdd,setNameTodoAdd] = useState('');
 
@@ -47,9 +49,10 @@ const AddItem = ({addNewItem}) => {
     }
 
     const handleComeBack = () => {
+        clickAdd();
         navigative("/");
     }
-
+    
     return (
         <React.Fragment>
         <ToastContainer
@@ -67,16 +70,25 @@ const AddItem = ({addNewItem}) => {
         <ToastContainer />
         <div className="add-item-wrap">
             <div className="add-item">
-                <h2 className="add-item-title"> Thêm công việc mới: </h2>
+                <h2 className="add-item-title"> 
+                {
+                    (click == CLICK_UPDATE && 
+                    <span> Chỉnh sửa công việc </span>)
+                    ||
+                    (
+                        <span> Thêm công việc mới</span>
+                    )
+                }
+                </h2>
                 <div className="add-item-name-wrap">
                     <h4 className="add-item-name-title"> Tên công việc </h4>
                     <input className="add-item-name-input" placeholder="nhập công việc" 
                     value = {nameTodoAdd} onChange={(e) => {setNameTodoAdd(e.target.value)}}/>
-                    {/* {
+                    {
                         nameTodoAdd == ''
                         && 
-                        <span className="add-item-input-warning"> Tên công việc không được để trống !!! </span>
-                    } */}
+                        <span className="add-item-name-warning"> Tên công việc không được để trống! </span>
+                    }
                 </div>
                 <div className="add-item-select-wrap">
                     <h4 className="add-item-select-title"> Mức độ </h4>
@@ -95,11 +107,19 @@ const AddItem = ({addNewItem}) => {
         </React.Fragment>
     )
 }
+const mapStateToProps = (state,owns) => {
+    return {
+        click: state.click,
+    }
+}
 const mapDispatchToProps = (dispatch) => {
     return {
         addNewItem: (item) => {
             dispatch(addNewItem(item));
         },
+        clickAdd: () => {
+            dispatch(clickAdd());
+        },
     }
 }
-export default connect(null,mapDispatchToProps)(AddItem);
+export default connect(mapStateToProps,mapDispatchToProps)(AddItem);
