@@ -1,32 +1,38 @@
-$border-radius: 0.3rem;
-.add-item {
+@mixin add-item {
+    border-radius: .3rem;
+    padding: 0.15rem 0.4rem 0.15rem 0.4rem;
+}
+.add-item-wrap {
     display: flex;
     justify-content: center;
+}
+.add-item {
+    border: 1px solid black;
+    border-radius: 1rem;
+    padding: 1em 3.5em;
     margin-top: 10em;
-    &-input-wrap {
-        position: relative;
-        .add-item-input {
-            border-radius: $border-radius;
-            padding: 0.3em 1em;
-            margin: 0 0.3em 0 1em;
-            &:hover {
-                cursor: alias;
-            }
-            &-warning {
-                position: absolute;
-                bottom: -20px;
-                left: 0.3em;
-                font-size: 12px;
-                color: red;
-            }
-        } 
+    &-name {
+        &-wrap {
+            margin-left: 1em;
+        }
+        &-input {
+            @include add-item;
+        }
+    }
+    &-select {
+        &-wrap {
+            margin-left: 1em;
+        }
+        &-select {
+            @include add-item;
+        }
     }
     &-button {
-        border-radius: $border-radius;
-        padding: 0.3em 1em;
-        margin: 0 0.2em;
+        @include add-item;
+        padding: 0.2rem 1.5rem;
+        margin: 1.5rem 0.5rem;
         &:hover {
             cursor: pointer;
         }
-    }  
+    }
 }

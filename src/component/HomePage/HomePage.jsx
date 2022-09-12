@@ -11,9 +11,9 @@ import Menu from "./Menu/Menu.jsx";
 export default function HomePage() {
     const navigative = useNavigate();
     useEffect(() => {
-        if(idUser == null) {
-            navigative("/Login");
-        }
+        // if(idUser == null) {
+        //     navigative("/Login");
+        // }
     },[]);
     return (
         <div className="home-page">

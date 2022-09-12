@@ -65,18 +65,32 @@ const AddItem = ({addNewItem}) => {
             />
             {/* Same as */}
         <ToastContainer />
-        <div className="add-item">
-            <div className="add-item-input-wrap">
-                <input className="add-item-input" placeholder="Add Todo Item" 
-                value = {nameTodoAdd} onChange={(e) => {setNameTodoAdd(e.target.value)}}/>
-                {
-                    nameTodoAdd == ''
-                    && 
-                    <span className="add-item-input-warning"> Tên công việc không được để trống !!! </span>
-                }
+        <div className="add-item-wrap">
+            <div className="add-item">
+                <h2 className="add-item-title"> Thêm công việc mới: </h2>
+                <div className="add-item-name-wrap">
+                    <h4 className="add-item-name-title"> Tên công việc </h4>
+                    <input className="add-item-name-input" placeholder="nhập công việc" 
+                    value = {nameTodoAdd} onChange={(e) => {setNameTodoAdd(e.target.value)}}/>
+                    {/* {
+                        nameTodoAdd == ''
+                        && 
+                        <span className="add-item-input-warning"> Tên công việc không được để trống !!! </span>
+                    } */}
+                </div>
+                <div className="add-item-select-wrap">
+                    <h4 className="add-item-select-title"> Mức độ </h4>
+                    <select className="add-item-select-select">
+                        <option> Không làm không sao </option>
+                        <option> Phải làm </option>
+                        <option> Làm ngay </option>
+                    </select>
+                </div>
+                <div className="add-item-button-wrap">
+                    <button className="add-item-button" onClick={handleAddItem}> Thêm </button>
+                    <button className="add-item-button" onClick={handleComeBack}> Quay Lại </button>
+                </div>
             </div>
-            <button className="add-item-button" onClick={handleAddItem}> Add </button>
-            <button className="add-item-button" onClick={handleComeBack}> Back </button>
         </div>
         </React.Fragment>
     )
