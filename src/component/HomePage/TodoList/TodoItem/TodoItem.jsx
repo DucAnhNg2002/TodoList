@@ -3,25 +3,19 @@ import "./TodoItem.scss";
 
 import { connect } from "react-redux";
 import { updateItem,deleteItem,clickUpdate } from "../../../Action/index.js";
-import { isClickUpdate } from "../../../store.js";
 import { useNavigate } from "react-router-dom";
 
 function TodoItem({id,time,name,isDone,updateItem,deleteItem,clickUpdate}) {
     const navigative = useNavigate();
     const [IsDone,setIsDone] = useState(isDone);
-    const [nameState,setNameState] = useState(name);
 
     const handleChangeDone = (e) => {
         updateItem(id,{id: id, time: time, name: name,isDone: !IsDone});
         setIsDone(!IsDone);
     }
-
-    const handleChangeName = (e) => {
-        setNameState(e.target.value);
-    }
-
+    
     const handleUpdateItem = (e) => {
-        clickUpdate({id :id,name : name});
+        clickUpdate({id,name,isDone});
         navigative("/AddItem");
     //     isClickUpdate = true;
     //     if(clickUpdate && setNameState == '') return;

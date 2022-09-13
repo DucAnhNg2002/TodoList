@@ -41,14 +41,14 @@ export const clickAdd = () => {
     return {
         id: -1,
         name: "",
+        isDone: false,
         type: CLICK_ADD,
     }
 }
 
 export const clickUpdate = (item) => {
     const obj =  {
-        id: item.id,
-        name: item.name,
+        ...item,
         type: CLICK_UPDATE,
     }
     return obj;

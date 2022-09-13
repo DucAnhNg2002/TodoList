@@ -33,24 +33,24 @@ const AddItem = ({click,clickAdd,addNewItem,updateItem}) => {
             alert("Tên công việc không được để trống !!!");
             return;
         }
-        toast.success('Thêm thành công !', {
-            position: "top-center",
-            autoClose: 1000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-        });
+        // toast.success('Thêm thành công !', {
+        //     position: "top-center",
+        //     autoClose: 1000,
+        //     hideProgressBar: false,
+        //     closeOnClick: true,
+        //     pauseOnHover: true,
+        //     draggable: true,
+        //     progress: undefined,
+        // });
         if(click.type == CLICK_ADD) {
             const Item = new newItem(nameTodoAdd);
             addNewItem(Item);
         }
         else {
-            console.log("YES");
-            updateItem(click.id,{id: click.id, name: click.name});
+            updateItem(click.id,{id: click.id, name: nameTodoAdd,isDone: click.isDone,});
         }
         setNameTodoAdd('');
+        navigative("/");
     }
 
     const handleComeBack = () => {
