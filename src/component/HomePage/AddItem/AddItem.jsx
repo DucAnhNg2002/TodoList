@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import "./AddItem.scss";
-
 import { connect } from "react-redux";
 import { addNewItem, clickAdd, updateItem } from "../../Action/index.js"
 import { useNavigate } from "react-router-dom";

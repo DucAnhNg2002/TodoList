@@ -1,26 +1,10 @@
-import React, { useEffect } from "react";
-import instanceAxios from "../../Axios/instanceAxios";
+import React from "react";
 import TodoItem from "./TodoItem/TodoItem";
 import "./TodoList.scss";
-import { idUser } from "../../Login/SignIn";
 import { connect } from "react-redux";
-import { createNewTodo } from "../../Action/index.js";
 
-function TodoList({todoList,createTodo}) {
-    const URL = `TodoApp/${idUser}`;
-    useEffect(() => {
-        instanceAxios.get(URL)
-        .then((response) => {
-            console.log("Xin chào: " + response.data.name + " !");
-            createTodo(response.data.data);
-        })
-        .catch((error) => {
-            console.log(error);
-        })
-    },[])
-
+function TodoList({todoList}) {
     return (
-    <React.Fragment>
         <div className="todo-list">
             {
             todoList.map((val) => {
@@ -33,7 +17,6 @@ function TodoList({todoList,createTodo}) {
                 })
             }
         </div>
-    </React.Fragment>
     )
 }
 const mapStateToProps = (state,ownProps) => {
@@ -41,11 +24,4 @@ const mapStateToProps = (state,ownProps) => {
         todoList: state.item,
     }
 }
-const mapDispatchToProps = (dispatch) => {
-    return {
-        createTodo: (todo) => {
-            dispatch(createNewTodo(todo));
-        }
-    }
-}
-export default connect(mapStateToProps,mapDispatchToProps)(TodoList);
+export default connect(mapStateToProps,null)(TodoList);

@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "./TodoItem.scss";
-
 import { connect } from "react-redux";
 import { updateItem,deleteItem,clickUpdate } from "../../../Action/index.js";
 import { useNavigate } from "react-router-dom";
