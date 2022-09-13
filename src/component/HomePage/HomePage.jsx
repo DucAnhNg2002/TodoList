@@ -10,7 +10,9 @@ import { createNewTodo } from "../Action/index.js";
 import instanceAxios from "../Axios/instanceAxios.js";
 import { connect } from "react-redux";
 import ReactLoading from 'react-loading';
+import { useRef } from "react";
 
+let isUseAxios = false;
 const HomePage = ({createTodo}) => {
     const navigative = useNavigate();
     const [isFetchAPI,setIsFetchAPI] = useState(false);
@@ -18,12 +20,13 @@ const HomePage = ({createTodo}) => {
         if(idUser == null) {
             navigative("/Login");
         }
-        else {
+        else if(isUseAxios == false) {
             const URL = `TodoApp/${idUser}`;
             instanceAxios.get(URL)
             .then((response) => {
                 console.log("Xin chào: " + response.data.name + " !");
                 createTodo(response.data.data);
+                isUseAxios = true;
                 setIsFetchAPI(true);
             })
             .catch((error) => {
@@ -31,10 +34,11 @@ const HomePage = ({createTodo}) => {
             })
         }
     },[]);
+
     return (
         <div className="home-page">
             {
-            (!isFetchAPI && 
+            (!isUseAxios && 
             <div className="loading-wrap" style={{display: "flex", justifyContent: "center",}}>
                 <ReactLoading type={"spinningBubbles"} color={"black"} height={'10%'} width={'10%'}/>
             </div>
