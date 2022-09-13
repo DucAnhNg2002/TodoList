@@ -43,8 +43,9 @@ export const clickAdd = () => {
     }
 }
 
-export const clickUpdate = () => {
+export const clickUpdate = (item) => {
     return {
+        value: item,
         type: CLICK_UPDATE,
     }
 }

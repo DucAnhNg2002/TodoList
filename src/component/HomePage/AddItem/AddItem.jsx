@@ -2,13 +2,12 @@ import React, { useEffect, useState } from "react";
 import "./AddItem.scss";
 
 import { connect } from "react-redux";
-import { addNewItem, clickAdd } from "../../Action/index.js"
+import { addNewItem, clickAdd, updateItem } from "../../Action/index.js"
 import { useNavigate } from "react-router-dom";
 import { idUser } from "../../Login/SignIn.jsx";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { CLICK_UPDATE } from "../../Const";
-// import { clickAdd } from "../../Action/index.js";
+import { CLICK_ADD, CLICK_UPDATE } from "../../Const";
 
 function newItem(name) {
     /* Item is object contain {id, time, name, isDone} */
@@ -19,10 +18,9 @@ function newItem(name) {
     this.isDone = false;
 }
 
-const AddItem = ({click,clickAdd,addNewItem}) => {
+const AddItem = ({click,clickAdd,addNewItem,updateItem}) => {
     const navigative = useNavigate();
-    const [nameTodoAdd,setNameTodoAdd] = useState('');
-
+    const [nameTodoAdd,setNameTodoAdd] = useState(click.name);
     useEffect(() => {
         if(idUser == null) {
             navigative("/Login");
@@ -43,8 +41,13 @@ const AddItem = ({click,clickAdd,addNewItem}) => {
             draggable: true,
             progress: undefined,
         });
-        const Item = new newItem(nameTodoAdd);
-        addNewItem(Item);
+        if(click.type = CLICK_ADD) {
+            const Item = new newItem(nameTodoAdd);
+            addNewItem(Item);
+        }
+        else {
+            updateItem(click.id,click.name);
+        }
         setNameTodoAdd('');
     }
 
@@ -52,7 +55,7 @@ const AddItem = ({click,clickAdd,addNewItem}) => {
         clickAdd();
         navigative("/");
     }
-    
+
     return (
         <React.Fragment>
         <ToastContainer
@@ -72,7 +75,7 @@ const AddItem = ({click,clickAdd,addNewItem}) => {
             <div className="add-item">
                 <h2 className="add-item-title"> 
                 {
-                    (click == CLICK_UPDATE && 
+                    (click.type == CLICK_UPDATE && 
                     <span> Chỉnh sửa công việc </span>)
                     ||
                     (
@@ -99,7 +102,13 @@ const AddItem = ({click,clickAdd,addNewItem}) => {
                     </select>
                 </div>
                 <div className="add-item-button-wrap">
-                    <button className="add-item-button" onClick={handleAddItem}> Thêm </button>
+                    <button className="add-item-button" onClick={handleAddItem}> 
+                    {
+                        (click.type == CLICK_UPDATE && <span> Lưu </span>)
+                        ||
+                        <span> Thêm </span>
+                    }
+                     </button>
                     <button className="add-item-button" onClick={handleComeBack}> Quay Lại </button>
                 </div>
             </div>
@@ -116,6 +125,9 @@ const mapDispatchToProps = (dispatch) => {
     return {
         addNewItem: (item) => {
             dispatch(addNewItem(item));
+        },
+        updateItem: (id,item) => {
+            dispatch(updateItem(id,item));
         },
         clickAdd: () => {
             dispatch(clickAdd());

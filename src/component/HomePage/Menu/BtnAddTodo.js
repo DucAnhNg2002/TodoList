@@ -1,9 +1,12 @@
 import { useNavigate } from "react-router-dom";
 import "../../../grid.css";
+import { connect } from "react-redux";
+import { clickAdd } from "../../Action/index.js";
 
-const BtnAddTodo = () => {
+const BtnAddTodo = ({clickAdd}) => {
     const naviagive = useNavigate();
     const handleClickBtnAddTodo = () => {
+        clickAdd();
         naviagive("/AddItem");
     }
     return (
@@ -12,5 +15,11 @@ const BtnAddTodo = () => {
         </button>
     )
 }
-
-export default BtnAddTodo;
+const mapDispatchToProps = (dispatch) => {
+    return {
+        clickAdd: () => {
+            dispatch(clickAdd());
+        },
+    }
+}
+export default connect(null,mapDispatchToProps)(BtnAddTodo);

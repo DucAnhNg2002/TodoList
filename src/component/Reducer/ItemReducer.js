@@ -38,7 +38,7 @@ const ItemReducers = (todoList = [], action) => {
             todo = [];
             return todo;
         default:
-            return [];
+            return todoList;
     }
 }
 export default ItemReducers;
