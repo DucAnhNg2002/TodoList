@@ -10,24 +10,29 @@ import 'react-toastify/dist/ReactToastify.css';
 import { CLICK_ADD, CLICK_UPDATE } from "../../Const";
 // import { clickAdd } from "../../Action/index.js";
 
-function newItem(name) {
+function newItem(name,level) {
     /* Item is object contain {id, time, name, isDone} */
     const date = new Date();
     this.id = date.getTime();
     this.time = date.getUTCDate() + "/" + (date.getUTCMonth()+1) + "/" + date.getUTCFullYear() + " " + date.getHours() + ":" + date.getMinutes();
     this.name = name;
+    this.level = level;
     this.isDone = false;
 }
 
 const AddItem = ({click,clickAdd,addNewItem,updateItem}) => {
     const navigative = useNavigate();
     const [nameTodoAdd,setNameTodoAdd] = useState(click.name);
+    const [selectLevel,setSelectLevel] = useState(click.level);
     useEffect(() => {
         if(idUser == null) {
             navigative("/Login");
         }
     },[])
 
+    const handleSelectLever = (e) => {
+        setSelectLevel(e.target.value);
+    }
     const handleAddItem = () => {
         if(nameTodoAdd == '') {
             alert("Tên công việc không được để trống !!!");
@@ -43,11 +48,17 @@ const AddItem = ({click,clickAdd,addNewItem,updateItem}) => {
         //     progress: undefined,
         // });
         if(click.type == CLICK_ADD) {
-            const Item = new newItem(nameTodoAdd);
+            const Item = new newItem(nameTodoAdd,selectLevel);
             addNewItem(Item);
         }
         else {
-            updateItem(click.id,{id: click.id, name: nameTodoAdd,isDone: click.isDone,});
+            updateItem(click.id,{
+                id: click.id, 
+                time: click.time,
+                name: nameTodoAdd,
+                level: selectLevel,
+                isDone: click.isDone,
+            });
         }
         setNameTodoAdd('');
         navigative("/");
@@ -97,10 +108,10 @@ const AddItem = ({click,clickAdd,addNewItem,updateItem}) => {
                 </div>
                 <div className="add-item-select-wrap">
                     <h4 className="add-item-select-title"> Mức độ </h4>
-                    <select className="add-item-select-select">
-                        <option> Không làm không sao </option>
-                        <option> Phải làm </option>
-                        <option> Làm ngay </option>
+                    <select className="add-item-select-select" onChange={handleSelectLever} defaultValue={`${selectLevel}`} > 
+                        <option value = "1"> Không làm không sao </option>
+                        <option value = "2"> Phải làm </option>
+                        <option value = "3"> Làm ngay </option>
                     </select>
                 </div>
                 <div className="add-item-button-wrap">

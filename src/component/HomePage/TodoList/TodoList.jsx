@@ -27,7 +27,7 @@ function TodoList({todoList,createTodo}) {
                 return ( 
                     /* key is time random */
                     <div key = {val.id} className = "todo-item"> 
-                        <TodoItem id = {val.id} time = {val.time} name = {val.name} isDone = {val.isDone} />
+                        <TodoItem id = {val.id} time = {val.time} name = {val.name} level = {val.level} isDone = {val.isDone} />
                     </div>
                     )
                 })

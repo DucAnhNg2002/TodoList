@@ -38,18 +38,22 @@ export const clearTodoLocal = () => {
 }
 
 export const clickAdd = () => {
-    return {
+    const obj = {
         id: -1,
+        time: "",
         name: "",
+        level: 1,
         isDone: false,
+    }
+    return {
+        ...obj,
         type: CLICK_ADD,
     }
 }
 
 export const clickUpdate = (item) => {
-    const obj =  {
+    return {
         ...item,
         type: CLICK_UPDATE,
     }
-    return obj;
 }

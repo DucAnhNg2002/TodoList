@@ -5,17 +5,23 @@ import { connect } from "react-redux";
 import { updateItem,deleteItem,clickUpdate } from "../../../Action/index.js";
 import { useNavigate } from "react-router-dom";
 
-function TodoItem({id,time,name,isDone,updateItem,deleteItem,clickUpdate}) {
+function TodoItem({id,time,name,level,isDone,updateItem,deleteItem,clickUpdate}) {
     const navigative = useNavigate();
     const [IsDone,setIsDone] = useState(isDone);
 
     const handleChangeDone = (e) => {
-        updateItem(id,{id: id, time: time, name: name,isDone: !IsDone});
+        updateItem(id,{id,time,name,isDone: !IsDone,level});
         setIsDone(!IsDone);
     }
-    
+
     const handleUpdateItem = (e) => {
-        clickUpdate({id,name,isDone});
+        clickUpdate({
+            id,
+            time,
+            name,
+            isDone,
+            level
+        });
         navigative("/AddItem");
     //     isClickUpdate = true;
     //     if(clickUpdate && setNameState == '') return;
@@ -39,6 +45,15 @@ function TodoItem({id,time,name,isDone,updateItem,deleteItem,clickUpdate}) {
             </div>
             <div className="todo-item-name"> { name } </div>
             <div className="todo-item-select">
+                <div className="todo-item-level">
+                    {
+                        (level == 1 && <span style={{backgroundColor: "rgb(77, 255, 77)",}}> Không làm không sao</span>)
+                        ||
+                        (level == 2 && <span style={{backgroundColor: "rgb(255, 173, 51)",}}> Phải làm</span>)
+                        ||
+                        (level == 3 && <span style={{backgroundColor: "rgb(230, 57, 0)",}}> Làm ngay</span>)
+                    }
+                </div>
                 <div className="todo-item-update">
                     <button className="todo-item-update-button" onClick={handleUpdateItem}> 
                         <i className="fa-solid fa-pen-to-square"></i> 
