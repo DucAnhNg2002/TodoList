@@ -19,15 +19,15 @@ Account = JSON.parse(localStorage.getItem(keyLocalStore))
 let loadedUser = false, checkLogin = false;
 let idUser = null, users = [];
 idUser = 1
-instanceAxios.get("TodoApp")
-    .then((response) => {
-        console.log("Loaded Users !!");
-        loadedUser = true;
-        users = response.data;
-    })
-    .catch((error) => {
-        console.log(error);
-    })
+// instanceAxios.get("TodoApp")
+//     .then((response) => {
+//         console.log("Loaded Users !!");
+//         loadedUser = true;
+//         users = response.data;
+//     })
+//     .catch((error) => {
+//         console.log(error);
+//     })
 /* Load users */
 
 const SignIn = ({clearTodo}) => {

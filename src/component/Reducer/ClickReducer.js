@@ -1,15 +1,17 @@
 import { CLICK_ADD,CLICK_UPDATE } from "../../../src/component/Const"
 
-const ClickReducers = (click = CLICK_ADD, action) => {
+const ClickReducers = (click = { id: -1, name: "", type: CLICK_ADD,}, action) => {
     switch(action.type) {
         case CLICK_ADD:
-            click = CLICK_ADD;
-            return click;
+            return {
+                ...action,
+            }
         case CLICK_UPDATE:
-            click = CLICK_UPDATE;
-            return click;
+            return {
+                ...action,
+            }
         default:
-            return CLICK_ADD;
+            return click;
     }
 }
 export default ClickReducers;

@@ -21,7 +21,7 @@ function TodoItem({id,time,name,isDone,updateItem,deleteItem,clickUpdate}) {
     }
 
     const handleUpdateItem = (e) => {
-        clickUpdate();
+        clickUpdate({id :id,name : name});
         navigative("/AddItem");
     //     isClickUpdate = true;
     //     if(clickUpdate && setNameState == '') return;
@@ -67,8 +67,8 @@ const mapDispatchToProps = (dispatch) => {
         deleteItem: (id,item) => {
             dispatch(deleteItem(id));
         },
-        clickUpdate: () => {
-            dispatch(clickUpdate());
+        clickUpdate: (item) => {
+            dispatch(clickUpdate(item));
         }
     }
 }

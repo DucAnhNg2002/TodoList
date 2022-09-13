@@ -39,12 +39,17 @@ export const clearTodoLocal = () => {
 
 export const clickAdd = () => {
     return {
+        id: -1,
+        name: "",
         type: CLICK_ADD,
     }
 }
 
-export const clickUpdate = () => {
-    return {
+export const clickUpdate = (item) => {
+    const obj =  {
+        id: item.id,
+        name: item.name,
         type: CLICK_UPDATE,
     }
+    return obj;
 }
