@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { addNewItem, clickAdd, updateItem } from "../../Action/index.js"
 import { useNavigate } from "react-router-dom";
 import { idUser } from "../../Login/SignIn.jsx";
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { CLICK_ADD, CLICK_UPDATE } from "../../Const";
 // import { clickAdd } from "../../Action/index.js";
@@ -87,7 +87,7 @@ const AddItem = ({click,clickAdd,addNewItem,updateItem}) => {
             <div className="add-item">
                 <h2 className="add-item-title"> 
                 {
-                    (click == CLICK_UPDATE && 
+                    (click === CLICK_UPDATE && 
                     <span> Chỉnh sửa công việc </span>)
                     ||
                     (
@@ -100,7 +100,7 @@ const AddItem = ({click,clickAdd,addNewItem,updateItem}) => {
                     <input className="add-item-name-input" placeholder="nhập công việc" 
                     value = {nameTodoAdd} onChange={(e) => {setNameTodoAdd(e.target.value)}}/>
                     {
-                        nameTodoAdd == ''
+                        nameTodoAdd === ''
                         && 
                         <span className="add-item-name-warning"> Tên công việc không được để trống! </span>
                     }
@@ -116,7 +116,7 @@ const AddItem = ({click,clickAdd,addNewItem,updateItem}) => {
                 <div className="add-item-button-wrap">
                     <button className="add-item-button" onClick={handleAddItem}> 
                     {
-                        (click.type == CLICK_UPDATE && 
+                        (click.type === CLICK_UPDATE && 
                         <span> Lưu </span>
                         )
                         ||
